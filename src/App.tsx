@@ -1,12 +1,15 @@
-import type React from "react";
-import { BrowserRouter } from "react-router";
-import Routes from "./routes";
+import AppRoutes from "@routes/index";
+import { RouterProvider, createBrowserRouter } from "react-router";
 import "./styles/global.css";
 
-const App: React.FC = () => (
-	<BrowserRouter>
-		<Routes />
-	</BrowserRouter>
-);
+/** ルーターを生成して Provider でアプリに挿入 */
+const router = createBrowserRouter([
+	{
+		path: "/*",
+		element: <AppRoutes />,
+	},
+]);
 
-export default App;
+export default function App() {
+	return <RouterProvider router={router} />;
+}

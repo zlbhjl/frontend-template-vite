@@ -1,12 +1,16 @@
-import type React from "react";
+import Layout from "@components/Layout";
+import PingPage from "@pages/PingPage";
+import UsersPage from "@pages/UsersPage";
+import type { FC } from "react";
 import { Route, Routes } from "react-router";
-import PingPage from "../pages/PingPage";
-import UsersPage from "../pages/UsersPage";
 
-const AppRoutes: React.FC = () => (
+const AppRoutes: FC = () => (
 	<Routes>
-		<Route path="/" element={<UsersPage />} />
-		<Route path="/ping" element={<PingPage />} />
+		{/* すべてのページを Layout でラップ */}
+		<Route element={<Layout />}>
+			<Route index element={<UsersPage />} />
+			<Route path="ping" element={<PingPage />} />
+		</Route>
 	</Routes>
 );
 

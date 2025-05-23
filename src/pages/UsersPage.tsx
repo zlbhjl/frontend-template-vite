@@ -1,9 +1,7 @@
-import Layout from "@components/Layout";
 import { useUserStore } from "@stores/userStore";
-import type React from "react";
-import { useEffect } from "react";
+import { type FC, useEffect } from "react";
 
-const UsersPage: React.FC = () => {
+const UsersPage: FC = () => {
 	const users = useUserStore((s) => s.users);
 	const fetchUsers = useUserStore((s) => s.fetchUsers);
 
@@ -12,8 +10,9 @@ const UsersPage: React.FC = () => {
 	}, [fetchUsers]);
 
 	return (
-		<Layout>
+		<>
 			<h1>ユーザー一覧</h1>
+
 			{users.length === 0 ? (
 				<p>ロード中...</p>
 			) : (
@@ -25,7 +24,7 @@ const UsersPage: React.FC = () => {
 					))}
 				</ul>
 			)}
-		</Layout>
+		</>
 	);
 };
 
