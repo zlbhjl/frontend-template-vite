@@ -27,6 +27,7 @@
 			"@hooks/*": ["src/hooks/*"],
 			"@utils/*": ["src/utils/*"],
 			"@styles/*": ["src/styles/*"],
+			"@theme": ["src/theme/index.ts"],
 			"@assets/*": ["src/assets/*"],
 			"@routes/*": ["src/routes/*"]
 		}

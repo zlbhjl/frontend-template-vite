@@ -1,22 +1,30 @@
+import { AppBar, Button, Container, Toolbar } from "@mui/material";
 import type { FC } from "react";
-import { NavLink, Outlet } from "react-router";
+import { Link, Outlet } from "react-router";
 
 const Layout: FC = () => (
-	<div>
-		<nav style={{ padding: "1rem", background: "#1a1a1a" }}>
-			<NavLink to="/" end style={{ marginRight: "1rem", color: "#fff" }}>
-				Users
-			</NavLink>
-			<NavLink to="/ping" style={{ color: "#fff" }}>
-				Ping
-			</NavLink>
-		</nav>
+	<>
+		{/* Top Navigation */}
+		<AppBar position="static" color="primary">
+			<Toolbar variant="dense">
+				{/* `component={Link}` で react-router のリンクに変換 */}
+				<Button component={Link} to="/" color="inherit">
+					Home
+				</Button>
+				<Button component={Link} to="/users" color="inherit">
+					Users
+				</Button>
+				<Button component={Link} to="/ping" color="inherit">
+					Ping
+				</Button>
+			</Toolbar>
+		</AppBar>
 
-		<main style={{ padding: "1rem" }}>
-			{/* 子ルートを書き換える場所 */}
+		{/* Main content */}
+		<Container maxWidth="lg" sx={{ py: 4 }}>
 			<Outlet />
-		</main>
-	</div>
+		</Container>
+	</>
 );
 
 export default Layout;

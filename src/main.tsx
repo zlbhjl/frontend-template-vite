@@ -1,18 +1,20 @@
+import { CssBaseline, ThemeProvider } from "@mui/material";
+import { theme } from "@theme";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
+import "@styles/index.css";
 
-// root 要素を取得
-const container = document.getElementById("root");
-
-// nullチェック
-if (!container) {
-	throw new Error("Root container element not found");
+const rootElement = document.getElementById("root");
+if (!rootElement) {
+	throw new Error("Root element not found");
 }
 
-const root = ReactDOM.createRoot(container);
-root.render(
+ReactDOM.createRoot(rootElement).render(
 	<React.StrictMode>
-		<App />
+		<ThemeProvider theme={theme}>
+			<CssBaseline />
+			<App />
+		</ThemeProvider>
 	</React.StrictMode>,
 );

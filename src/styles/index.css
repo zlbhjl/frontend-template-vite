@@ -1,0 +1,4 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* 追加ユーティリティが必要ならここへ */
