@@ -10,11 +10,15 @@
 
 [スタンドアロン版pnpmをインストール](https://pnpm.io/ja/installation#%E3%82%B9%E3%82%BF%E3%83%B3%E3%83%89%E3%82%A2%E3%83%AD%E3%83%B3%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%99%E3%82%8B)
 
+※WindowsではWindows Defender関係で問題が起きる可能性があるため、WSLなどへのインストールを推奨します
+
 ```bash
 curl -fsSL https://get.pnpm.io/install.sh | sh -
 ```
 
 ### 2. 依存関係のインストール＆フック有効化
+
+プロジェクトルートで以下を実行
 
 ```bash
 pnpm install
@@ -50,7 +54,7 @@ src/
   ├ App.tsx             
   └ main.tsx            
 tests/                  
-.env.example            
+.env.template     
 index.html              
 package.json            
 tsconfig.json           
