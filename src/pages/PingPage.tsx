@@ -1,8 +1,7 @@
-import { usePingStore } from "@stores/pingStore";
-import type React from "react";
+import { usePingStore } from "@/stores/pingStore";
 import { useEffect } from "react";
 
-const PingPage: React.FC = () => {
+export default function PingPage() {
 	const { message, loading, error, loadPing } = usePingStore();
 
 	useEffect(() => {
@@ -14,10 +13,10 @@ const PingPage: React.FC = () => {
 
 	return (
 		<div>
-			<h1>Ping</h1>
-			<p>サーバーからの応答: {message}</p>
+			<h1 className="text-2xl font-semibold mb-4">Ping チェック</h1>
+			<p>
+				サーバーからの応答: <span className="font-mono">{message}</span>
+			</p>
 		</div>
 	);
-};
-
-export default PingPage;
+}

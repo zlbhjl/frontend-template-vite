@@ -2,7 +2,7 @@ import Layout from "@components/Layout";
 import HomePage from "@pages/HomePage";
 import PingPage from "@pages/PingPage";
 import UsersPage from "@pages/UsersPage";
-import { Route, Routes } from "react-router";
+import { Route, Routes } from "react-router-dom";
 
 export default function AppRoutes() {
 	return (

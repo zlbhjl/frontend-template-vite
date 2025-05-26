@@ -1,5 +1,12 @@
-/* src/pages/HomePage.tsx */
-import { Button, Card, CardContent, CardHeader, Grid } from "@mui/material";
+import { Button } from "@/components/ui/button";
+import {
+	Card,
+	CardContent,
+	CardDescription,
+	CardHeader,
+	CardTitle,
+} from "@/components/ui/card";
+import { ArrowRight } from "lucide-react";
 
 const features = [
 	{ title: "ユーザー一覧", desc: "ユーザー API を呼び出す", path: "/users" },
@@ -8,46 +15,38 @@ const features = [
 
 export default function HomePage() {
 	return (
-		<>
-			{/* Hero */}
-			<section className="rounded-2xl bg-gradient-to-r from-brand to-blue-500 py-20 text-center text-white shadow-xl">
+		<div>
+			{/* ヒーロー部：プレーンテキスト */}
+			<section className="rounded-2xl bg-gradient-to-r py-20 text-center">
 				<h1 className="text-5xl font-extrabold tracking-tight">
 					Hackathon&nbsp;Starter
 				</h1>
 				<p className="mt-4 text-lg opacity-90">
-					Tailwind × MUI × Vite × React × TS
+					Vite × React × TS × Tailwind × Shadcn/ui
 				</p>
-
-				<Button variant="contained" size="large" href="/users" sx={{ mt: 6 }}>
-					さっそく触ってみる
-				</Button>
 			</section>
 
-			{/* Features */}
-			<section className="mt-20">
-				<Grid container spacing={4}>
-					{features.map((f) => (
-						<Grid
-							/* v7 では item/xs/sm/md プロップは廃止。
-                 size オブジェクトでブレークポイントを指定する */
-							size={{ xs: 12, sm: 6, md: 4 }}
-							key={f.title}
-						>
-							<Card
-								sx={{
-									height: "100%",
-									display: "flex",
-									flexDirection: "column",
-								}}
-							>
-								<CardHeader title={f.title} />
-								<CardContent sx={{ flexGrow: 1 }}>{f.desc}</CardContent>
-								<Button href={f.path}>Go</Button>
-							</Card>
-						</Grid>
-					))}
-				</Grid>
-			</section>
-		</>
+			{/* カード群：中央３カラム配置 */}
+			<div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+				{features.map((f) => (
+					<Card key={f.title} className="hover:shadow-lg transition-shadow">
+						<CardHeader>
+							<CardTitle>{f.title}</CardTitle>
+							<CardDescription>{f.desc}</CardDescription>
+						</CardHeader>
+						<CardContent className="mt-auto">
+							<Button asChild variant="outline" className="w-full">
+								<a
+									href={f.path}
+									className="flex items-center justify-center gap-1"
+								>
+									Go <ArrowRight className="size-4" />
+								</a>
+							</Button>
+						</CardContent>
+					</Card>
+				))}
+			</div>
+		</div>
 	);
 }

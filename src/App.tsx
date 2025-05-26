@@ -1,6 +1,6 @@
 import AppRoutes from "@routes/index";
-import { RouterProvider, createBrowserRouter } from "react-router";
-import "@styles/index.css";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import "@styles/global.css";
 
 /** ルーターを生成して Provider でアプリに挿入 */
 const router = createBrowserRouter([
