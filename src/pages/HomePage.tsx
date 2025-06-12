@@ -8,11 +8,19 @@ import {
 } from "@/components/ui/card";
 import { ArrowRight } from "lucide-react";
 
+/**
+ * ホームページで表示する機能一覧
+ * 新しい機能を追加する場合はここに追加
+ */
 const features = [
 	{ title: "ユーザー一覧", desc: "ユーザー API を呼び出す", path: "/users" },
 	{ title: "Ping API", desc: "サーバー疎通チェック", path: "/ping" },
 ];
 
+/**
+ * ホームページコンポーネント
+ * アプリケーションの機能紹介とナビゲーション
+ */
 export default function HomePage() {
 	return (
 		<div>
