@@ -56,8 +56,23 @@ src/
 tests/                  
 .env.template     
 index.html              
-package.json            
+package.json
 tsconfig.json           
 vite.config.ts          
 vitest.config.ts        
+```
+
+## 使用技術
+
+[選定時のメモ](https://github.com/Tech-JAIST/frontend-template-vite/issues/1)
+```
+Typescript+React+Vite
+(状態管理：Zustand)
+ルーティング：React Router
+HTTP クライアント：axios
+Nodeのバージョン管理+パッケージマネージャ:スタンドアロン版pnpm
+
+Linter・Formatter：Biome
+Gitフック管理：Lefthook
+UIフレームワーク：Tailwind CSS + shadcn/ui
 ```
