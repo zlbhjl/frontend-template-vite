@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-// src/components/Layout.tsx
 import {
 	NavigationMenu,
 	NavigationMenuItem,
@@ -15,12 +14,21 @@ import { cn } from "@/lib/utils";
 import { Menu } from "lucide-react";
 import { NavLink, Outlet } from "react-router-dom";
 
+/**
+ * ナビゲーションリンクの定義
+ * 新しいページを追加する場合はここに追加
+ */
 const links = [
 	{ to: "/", label: "Home" },
 	{ to: "/users", label: "Users" },
 	{ to: "/ping", label: "Ping" },
 ];
 
+/**
+ * 共通レイアウトコンポーネント
+ * ヘッダーナビゲーションとメインコンテンツエリアを提供
+ * レスポンシブ対応（デスクトップ/モバイル）
+ */
 export default function Layout() {
 	return (
 		<>
