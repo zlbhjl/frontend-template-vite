@@ -1,27 +1,17 @@
-import AppRoutes from "@routes/index";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import "@styles/global.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import BuildingPage from "./pages/BuildingPage";
 
-/**
- * アプリケーションのルートコンポーネント
- * React Routerのルーターを初期化し、アプリケーション全体に提供します
- */
-
-/**
- * ブラウザルーターの設定
- * すべてのルートは AppRoutes コンポーネントで管理されます
- */
-const router = createBrowserRouter([
-	{
-		path: "/*",
-		element: <AppRoutes />,
-	},
-]);
-
-/**
- * App コンポーネント
- * RouterProviderでルーティング機能をアプリケーション全体に提供
- */
-export default function App() {
-	return <RouterProvider router={router} />;
+function App() {
+	return (
+		<BrowserRouter>
+			<Routes>
+				<Route path="/" element={<HomePage />} />
+				<Route path="/building/:buildingId" element={<BuildingPage />} />
+			</Routes>
+		</BrowserRouter>
+	);
 }
+
+export default App;
+

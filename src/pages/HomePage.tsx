@@ -1,60 +1,64 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import {
-	Card,
-	CardContent,
-	CardDescription,
-	CardHeader,
-	CardTitle,
-} from "@/components/ui/card";
-import { ArrowRight } from "lucide-react";
+import { Input } from "@/components/ui/input"; // 必要なら自作またはUIライブラリから追加
 
-/**
- * ホームページで表示する機能一覧
- * 新しい機能を追加する場合はここに追加
- */
-const features = [
-	{ title: "ユーザー一覧", desc: "ユーザー API を呼び出す", path: "/users" },
-	{ title: "Ping API", desc: "サーバー疎通チェック", path: "/ping" },
-];
-
-/**
- * ホームページコンポーネント
- * アプリケーションの機能紹介とナビゲーション
- */
 export default function HomePage() {
-	return (
-		<div>
-			{/* ヒーロー部：プレーンテキスト */}
-			<section className="rounded-2xl bg-gradient-to-r py-20 text-center">
-				<h1 className="text-5xl font-extrabold tracking-tight">
-					Hackathon&nbsp;Starter
-				</h1>
-				<p className="mt-4 text-lg opacity-90">
-					Vite × React × TS × Tailwind × Shadcn/ui
-				</p>
-			</section>
+	const navigate = useNavigate();
 
-			{/* カード群：中央３カラム配置 */}
-			<div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-				{features.map((f) => (
-					<Card key={f.title} className="hover:shadow-lg transition-shadow">
-						<CardHeader>
-							<CardTitle>{f.title}</CardTitle>
-							<CardDescription>{f.desc}</CardDescription>
-						</CardHeader>
-						<CardContent className="mt-auto">
-							<Button asChild variant="outline" className="w-full">
-								<a
-									href={f.path}
-									className="flex items-center justify-center gap-1"
-								>
-									Go <ArrowRight className="size-4" />
-								</a>
-							</Button>
-						</CardContent>
-					</Card>
-				))}
-			</div>
+	const [username, setUsername] = useState("");
+	const [password, setPassword] = useState("");
+	const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+	const handleLogin = () => {
+		// 簡易的な認証チェック（必要なら実際のAPIなどと連携可能）
+		if (username === "admin" && password === "password") {
+			setIsLoggedIn(true);
+		} else {
+			alert("ユーザー名またはパスワードが間違っています。");
+		}
+	};
+
+	const handleSelect = (id: string) => {
+		navigate(`/building/${id}`);
+	};
+
+	return (
+		<div className="flex flex-col items-center justify-center min-h-screen gap-6">
+			{!isLoggedIn ? (
+				<>
+					<h1 className="text-2xl font-semibold">ログインしてください</h1>
+					<div className="flex flex-col gap-4 w-80">
+						<Input
+							type="text"
+							placeholder="ユーザー名"
+							value={username}
+							onChange={(e) => setUsername(e.target.value)}
+						/>
+						<Input
+							type="password"
+							placeholder="パスワード"
+							value={password}
+							onChange={(e) => setPassword(e.target.value)}
+						/>
+						<Button onClick={handleLogin}>ログイン</Button>
+					</div>
+				</>
+			) : (
+				<>
+					<h1 className="text-3xl font-bold">学生寮 棟を選択してください</h1>
+					<div className="flex gap-4">
+						<Button onClick={() => handleSelect("a")}>A棟</Button>
+						<Button onClick={() => handleSelect("b")}>B棟</Button>
+						<Button onClick={() => handleSelect("c")}>C棟</Button>
+					</div>
+				</>
+			)}
 		</div>
 	);
 }
+
+
+
+
+
