@@ -1,7 +1,16 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input"; // 必要なら自作またはUIライブラリから追加
+import { Input } from "@/components/ui/input";
+
+// ログインを許可するユーザーのリストを配列で定義
+// テストユーザーの追加や管理が容易になります
+const users = [
+	{ username: "admin", password: "password" },
+	{ username: "testuser", password: "testpass" },
+	// さらにユーザーを追加する場合は、この下に追加します
+	// { username: "student1", password: "password123" },
+];
 
 export default function HomePage() {
 	const navigate = useNavigate();
@@ -11,10 +20,16 @@ export default function HomePage() {
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 
 	const handleLogin = () => {
-		// 簡易的な認証チェック（必要なら実際のAPIなどと連携可能）
-		if (username === "admin" && password === "password") {
+		// 配列内に、入力されたユーザー名とパスワードの組み合わせが存在するかをチェックします
+		const foundUser = users.find(
+			(user) => user.username === username && user.password === password
+		);
+
+		if (foundUser) {
+			// ユーザーが見つかった場合、ログイン状態にします
 			setIsLoggedIn(true);
 		} else {
+			// 見つからなかった場合、エラーメッセージを表示します
 			alert("ユーザー名またはパスワードが間違っています。");
 		}
 	};
